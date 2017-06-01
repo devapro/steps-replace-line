@@ -1,5 +1,3 @@
 .bitrise*
-*/obj/*
-*/bin/*
-packages/
-Components/
+_tmp
+.gows.user.yml
