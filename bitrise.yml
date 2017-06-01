@@ -46,7 +46,7 @@ workflows:
     - audit-this-step
     envs:
     - MY_STEPLIB_REPO_FORK_GIT_URL: $MY_STEPLIB_REPO_FORK_GIT_URL
-    - STEP_ID_IN_STEPLIB: step-change-value
+    - STEP_ID_IN_STEPLIB: change-value
     - STEP_GIT_VERION_TAG_TO_SHARE: $RELEASE_VERSION
     - STEP_GIT_CLONE_URL: https://github.com/bitrise-community/steps-change-value.git
     steps:
