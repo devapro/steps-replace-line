@@ -10,6 +10,13 @@ import (
 	"github.com/bitrise-io/go-utils/fileutil"
 )
 
+const (
+	// versionCode — A positive integer [...] -> https://developer.android.com/studio/publish/versioning
+	versionCodeRegexPattern = `^versionCode(?:\s|=)+(.*?)(?:\s|\/\/|$)`
+	// versionName — A string used as the version number shown to users [...] -> https://developer.android.com/studio/publish/versioning
+	versionNameRegexPattern = `^versionName(?:=|\s)+(.*?)(?:\s|\/\/|$)`
+)
+
 func main() {
 	var (
 		inputFile                     = os.Getenv("file")
@@ -50,9 +57,24 @@ func main() {
 		}
 	}
 
+
 	// replace
 	fmt.Println(" (i) Replacing...")
-	replacedContent := strings.Replace(origContent, inputOldValue, inputNewValue, -1)
+
+	lines := strings.Split(origContent, "\n")
+
+	modifiedLines := []string{}
+
+	for _, s := range lines {
+		if strings.Contains(s, inputOldValue) {
+			modifiedLine := strings.Replace(s, s, inputNewValue, -1)
+			modifiedLines = append(modifiedLines, modifiedLine)
+		} else {
+			modifiedLines = append(modifiedLines, s)
+		}
+	}
+
+	replacedContent := strings.Join(modifiedLines[:], "\n")
 
 	if inputIsShowFileContent {
 		fmt.Println()

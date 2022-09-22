@@ -1,31 +1,31 @@
-title: "Change value in file"
-summary: Changes a selected value in a targeted file.
+title: "Replace string in file"
+summary: Replace a string in a targeted file.
 description: |-
-  This Step changes a selected value in a targeted file, for example, constants.
+  This Step replaced a selected string in a targeted file, for example, constants.
 
   ### Configuring the Step
 
   1. Set the **File path** in which you want to change a value.
-  2. Set the **Current value** which needs to be changed.
-  3. Set the **New value**.
+  2. Set the **Matched value** which needs to be found in string which should be replaced.
+  3. Set the **New value** which will be used as new string
 
   ### Troubleshooting
   Please make sure that your targeted file path is correct, existing and relative from the root folder.
-  Please make sure that you set a correct **Current value** which exists in the the targeted file. You must define this value.
+  Please make sure that you set a correct **Matched value** which exists in the the targeted file. You must define this value.
   Please make sure that you define the New value.
 
   ### Related Steps
   - [Change Working Directory for subsequent Steps](https://www.bitrise.io/integrations/steps/change-workdir)
 
-website: https://github.com/bitrise-steplib/steps-change-value
-source_code_url: https://github.com/bitrise-steplib/steps-change-value
-support_url: https://github.com/bitrise-steplib/steps-change-value/issues
+website: https://github.com/devapro/steps-replace-line
+source_code_url: https://github.com/devapro/steps-replace-line
+support_url: https://github.com/devapro/steps-replace-line/issues
 
 type_tags:
   - utility
 toolkit:
   go:
-    package_name: github.com/bitrise-steplib/steps-change-value
+    package_name: github.com/devapro/steps-replace-line
 
 inputs:
   - file:
@@ -35,13 +35,13 @@ inputs:
       is_required: true
   - old_value:
     opts:
-      title: "Current value"
-      summary: "The current value which needs to be changed in the target file."
+      title: "Matched value"
+      summary: "The value which needs to be found in the string."
       is_required: true
   - new_value:
     opts:
       title: "New value"
-      summary: "The new value you want to write to the target file."
+      summary: "The new value you want to write instead of matched strings."
       is_required: true
   - show_file: "false"
     opts:
